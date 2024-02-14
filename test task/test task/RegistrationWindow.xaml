@@ -1,0 +1,95 @@
+﻿<Window x:Class="test_task.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test_task"
+        mc:Ignorable="d"
+        Title="RegistrationWindow" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Content="Логин"
+            FontSize="20"
+            FontStyle="Italic"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"/>
+
+        <TextBox
+            Text="{Binding RegLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            x:Name="logField"
+            Width="150"
+            Height="30"
+            Grid.Column="2"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"/>
+
+        <Label
+            Content="Пароль"
+            FontSize="20"
+            FontStyle="Italic"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="1"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"/>
+
+        <TextBox
+            Text="{Binding RegPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            x:Name="passField"
+            Width="150"
+            Height="30"
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"/>
+
+        <Label
+            Content="повторите пароль"
+            FontSize="18"
+            FontStyle="Italic"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"/>
+
+        <TextBox
+            Text="{Binding RegRepPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            x:Name="passRepeatField"
+            Width="150"
+            Height="30"
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"/>
+
+        <Button
+            x:Name="addRegistrB"
+            Content="Зарегистрироваться"
+            Command=""
+            Click="addRegistrB_Click"
+            FontSize="20"
+            FontWeight="Bold"
+            FontStyle="Italic"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.Row="4"
+            Width="220" 
+            Height="30"/>
+    </Grid>
+</Window>
