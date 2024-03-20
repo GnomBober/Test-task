@@ -10,20 +10,6 @@ namespace WpfTask.ViewModels
     {
         public string Name => "SingletonSean";
 
-        public ICommand NavigateHomeCommand { get;}
-
-        //private RelayCommand loginCommand;
-        //public ICommand LoginCommand => loginCommand ??= new RelayCommand(Login);
-
-        private void Login(object commandParameter)
-        {
-            UserView view = new UserView();
-            view.Show();
-        }
-        /*public AccountViewModel(NavigationStore navigationStore)
-        {
-             NavigateHomeCommand = new NavigateCommand<HomeViewModel>(new NavigationService<HomeViewModel>(
-                 navigationStore, () => new HomeViewModel(navigationStore)));
-        }*/ 
+        //TODO account logic
     }
 }
