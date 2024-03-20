@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace test_task
+namespace WpfTask.Services
 {
-    public class ApplicationContext : DbContext
+    internal class DbConnectionService : DbContext
     {
         public DbSet<User> Users { get; set; } = null!;
 

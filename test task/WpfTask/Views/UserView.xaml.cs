@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace test_task
+namespace WpfTask.Views
 {
     /// <summary>
-    /// Логика взаимодействия для Window1.xaml
+    /// Логика взаимодействия для UserView.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class UserView : Window
     {
-        public Window1()
+        public UserView()
         {
             InitializeComponent();
         }

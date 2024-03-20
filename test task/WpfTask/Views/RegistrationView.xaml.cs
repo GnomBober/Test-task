@@ -11,24 +11,25 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfTask.ViewModels;
 
-namespace test_task
+namespace WpfTask.Views
 {
     /// <summary>
-    /// Логика взаимодействия для RegistrationWindow.xaml
+    /// Логика взаимодействия для RegistrationView.xaml
     /// </summary>
-    public partial class RegistrationWindow : Window
+    public partial class RegistrationView : Window
     {
-        ViewModel viewModel { get; set; } = new ViewModel();
-        public RegistrationWindow()
+        RegistrationViewModel registrationViewModel = new RegistrationViewModel();
+        public RegistrationView()
         {
-            this.DataContext = viewModel;
+            this.DataContext = registrationViewModel;
             InitializeComponent();
         }
 
-        private void addRegistrB_Click(object sender, RoutedEventArgs e)
+        private void logField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.OnRegistration();
+
         }
     }
 }

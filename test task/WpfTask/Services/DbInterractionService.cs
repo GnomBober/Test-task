@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WpfTask.Services;
 using System.Windows;
-using System.Windows.Input;
+using WpfTask.Views;
 
-namespace test_task
+namespace WpfTask.Services
 {
-    internal class Model
+    internal class DbInterractionService
     {
         public bool CheckRegistration(string checkLogin)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (DbConnectionService db = new DbConnectionService())
             {
                 return
                 db.Users.Any(p => p.login == checkLogin);
@@ -20,41 +16,27 @@ namespace test_task
         }
         public User? GetUser(string login)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (DbConnectionService db = new DbConnectionService())
             {
                 return
                 db.Users.FirstOrDefault(p => p.login == login);
             }
-        }
-        public string PasswordCoder(string password)
-        {
-            string salt = "abc9";
-            string coded;
-            coded = $"{salt}" + $"{password}" + $"{salt}";
-
-            byte[] b = Encoding.ASCII.GetBytes(password);
-
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach(var symb in b)
-            {
-                stringBuilder.Append(symb.ToString());
-            }
-            return stringBuilder.ToString();
         }
         public void RegisterUser(string login, string password, string repPassword)
         {
             if (password != repPassword)
             {
                 MessageBox.Show("Пароли не совпадают");
+                return;
             }
 
-            using (ApplicationContext db = new ApplicationContext())
+            using (DbConnectionService db = new DbConnectionService())
             {
                 if (!CheckRegistration(login))
                 {
                     User user = new User();
                     user.login = login;
-                    user.password = PasswordCoder(password);
+                    user.password = PasswordCoderService.PasswordCoder(password);
                     db.Users.Add(user);
                     db.SaveChanges();
                     MessageBox.Show("Пользователь добавлен");
@@ -67,24 +49,24 @@ namespace test_task
         {
             if (login == "admin" && password == "admin")
             {
-                AdminWindow adminWindow = new AdminWindow();
+                AdminView adminWindow = new AdminView();
                 adminWindow.Show();
                 return;
             }
             else
-            {               
-                using (ApplicationContext db = new ApplicationContext())
+            {
+                using (DbConnectionService db = new DbConnectionService())
                 {
-                    password = PasswordCoder(password);
+                    password = PasswordCoderService.PasswordCoder(password);
                     User user = GetUser(login);
                     if (user is null)
                     {
                         MessageBox.Show("Неверный логин или пароль");
                         return;
                     }
-                    if (user.password == password) 
+                    if (user.password == password)
                     {
-                        Window1 window = new Window1();
+                        UserView window = new UserView();
                         window.Show();
                         return;
                     }

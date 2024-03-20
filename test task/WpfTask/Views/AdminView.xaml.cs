@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace test_task
+namespace WpfTask.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AdminWindow.xaml
+    /// Логика взаимодействия для AdminView.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class AdminView : Window
     {
-        public AdminWindow()
+        public AdminView()
         {
             InitializeComponent();
         }
